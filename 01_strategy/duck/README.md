@@ -1,6 +1,8 @@
 Duck(Strategyパターン)
 ============================
 
+テキストとほぼ同じDuckでのStrategyパターンです
+
 * Duckクラスは基底クラス
 * Duckはflyとquackがサブクラスごとに挙動が異なる
 * flyとquackはそれぞれbehaviorクラスを保持し、そちらで実装される
