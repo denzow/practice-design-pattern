@@ -8,13 +8,12 @@ from abc import abstractmethod
 
 
 class Observer:
-
-    def __init__(self, observable: Observable):
-        self._observable = observable
-        self._observable.add_observer(self)
+    """
+    オブザーバ(サブスクライバ)側の基底クラス
+    """
 
     @abstractmethod
-    def update(self, notified_observable: Observable, *args, **kwargs):
+    def update(self, notified_observable, *args, **kwargs):
         """
         need implement by subClasses.
         """
@@ -64,7 +63,7 @@ class Observable:
         if self._is_changed:
             self._is_changed = False
             for observer in self._observer_list:
-                observer.update()
+                observer.update(self)
 
 
 

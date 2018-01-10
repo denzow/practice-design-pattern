@@ -19,3 +19,14 @@ class WeatherData(Observable):
 
     def get_pressure(self):
         return self._pressure
+
+    def measurements_changed(self):
+        self.set_changed()
+        self.notify_observers()
+
+    def set_measurements(self, temperature, humidity, pressure):
+        self._temperature = temperature
+        self._humidity = humidity
+        self._pressure = pressure
+        self.measurements_changed()
+
