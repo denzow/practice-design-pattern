@@ -5,7 +5,7 @@ from io import StringIO
 
 from unittest import TestCase
 from lib.wether_data import WeatherData
-from lib.display import CurrentConditionDisplay
+from lib.display import CurrentConditionDisplay, StatisticsDisplay
 
 
 class TestWeather(TestCase):
@@ -31,5 +31,18 @@ class TestWeather(TestCase):
     def test_update(self):
         weather_data = WeatherData()
         current_condition_display = CurrentConditionDisplay(weather_data)
+        statistics_display = StatisticsDisplay(weather_data)
         weather_data.set_measurements(temperature=20, humidity=50, pressure=900)
-        self.assertEqual(sys.stdout.getvalue(), 'CurrentConditionDisplay: 20, 50\n')
+        result = sys.stdout.getvalue()
+        # 2つのDisplayの結果が含まれているか
+        self.assertIn('CurrentConditionDisplay: 20, 50', result)
+        self.assertIn('StatisticsDisplay: 20, 900', result)
+        self._clear_stdout()
+
+        # 更新後の結果で再表示されているか
+        weather_data.set_measurements(temperature=30, humidity=60, pressure=910)
+        result = sys.stdout.getvalue()
+        self.assertIn('CurrentConditionDisplay: 30, 60', result)
+        self.assertIn('StatisticsDisplay: 30, 910', result)
+        self._clear_stdout()
+
