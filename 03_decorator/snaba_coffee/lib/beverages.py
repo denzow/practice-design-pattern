@@ -1,6 +1,6 @@
 # coding: utf-8
 
-from .base import Beverage
+from .base import Beverage, BeverageSize
 
 
 class Espresso(Beverage):
@@ -10,7 +10,12 @@ class Espresso(Beverage):
         self._description = 'エスプレッソ'
 
     def cost(self):
-        return 1.99
+        if self._size == BeverageSize.TALL:
+            return 1.79
+        elif self._size == BeverageSize.GRANDE:
+            return 1.99
+        elif self._size == BeverageSize.VENTI:
+            return 2.19
 
 
 class HouseBlend(Beverage):
@@ -20,7 +25,12 @@ class HouseBlend(Beverage):
         self._description = 'ハウスブレンドコーヒー'
 
     def cost(self):
-        return 0.89
+        if self._size == BeverageSize.TALL:
+            return 0.79
+        elif self._size == BeverageSize.GRANDE:
+            return 0.89
+        elif self._size == BeverageSize.VENTI:
+            return 0.99
 
 
 class DarkRoast(Beverage):
@@ -29,6 +39,11 @@ class DarkRoast(Beverage):
         self._description = 'ダークローストコーヒー'
 
     def cost(self):
-        return 0.99
+        if self._size == BeverageSize.TALL:
+            return 0.89
+        elif self._size == BeverageSize.GRANDE:
+            return 0.99
+        elif self._size == BeverageSize.VENTI:
+            return 1.09
 
 
