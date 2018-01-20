@@ -22,7 +22,7 @@ class Sauce:
 
 class MarinaraSauce(Sauce):
     """
-
+    マリナラソース
     """
 
 
@@ -76,17 +76,17 @@ class Pepperoni:
 
 class SlicedPepperoni(Pepperoni):
     """
-
+    薄切りペパロニ
     """
 
 
 class Clams:
     """
-
+    二枚貝
     """
 
 
 class FreshClams(Clams):
     """
-    新鮮
+    新鮮な二枚貝
     """

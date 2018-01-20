@@ -3,6 +3,8 @@
 
 from abc import ABCMeta, abstractmethod
 
+from .ingredient import *
+
 
 class PizzaIngredientFactory:
 
@@ -11,7 +13,7 @@ class PizzaIngredientFactory:
         pass
 
     @abstractmethod
-    def create_source(self):
+    def create_sauce(self):
         pass
 
     @abstractmethod
@@ -32,7 +34,30 @@ class PizzaIngredientFactory:
 
 
 class NYPizzaIngredientFactory(PizzaIngredientFactory):
-
+    """
+    NYスタイルのピザ食材ファクトリ
+    """
 
     def create_dough(self):
-        return
+        return ThinCrustDough()
+
+    def create_sauce(self):
+        return MarinaraSauce()
+
+    def create_cheese(self):
+        return ReggianoCheese()
+
+    def create_veggies(self):
+        veggies = [
+            Garlic(),
+            Onion(),
+            Mushroom(),
+            RedPepper(),
+        ]
+        return veggies
+
+    def create_pepperoni(self):
+        return SlicedPepperoni()
+
+    def create_clam(self):
+        return FreshClams()
