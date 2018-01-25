@@ -13,6 +13,12 @@ class ThinCrustDough(Dough):
     """
 
 
+class ThickCrustDough(Dough):
+    """
+    シカゴピザ生地
+    """
+
+
 class Sauce:
     """
     ソース
@@ -26,6 +32,12 @@ class MarinaraSauce(Sauce):
     """
 
 
+class PlamTomatoSauce(Sauce):
+    """
+    プラムトマトソース
+    """
+
+
 class Cheese:
     """
     チーズ
@@ -35,6 +47,12 @@ class Cheese:
 class ReggianoCheese(Cheese):
     """
 
+    """
+
+
+class Mozzarella(Cheese):
+    """
+    モッツアレラ
     """
 
 
@@ -68,6 +86,24 @@ class RedPepper(Veggies):
     """
 
 
+class BlackOlives(Veggies):
+    """
+
+    """
+
+
+class Spinach(Veggies):
+    """
+
+    """
+
+
+class EggPlant(Veggies):
+    """
+
+    """
+
+
 class Pepperoni:
     """
     ペパロニ
@@ -89,4 +125,10 @@ class Clams:
 class FreshClams(Clams):
     """
     新鮮な二枚貝
+    """
+
+
+class FrozenClams(Clams):
+    """
+    冷凍な二枚貝
     """

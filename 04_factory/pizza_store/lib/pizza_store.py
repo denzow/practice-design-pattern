@@ -2,7 +2,10 @@
 
 from abc import ABCMeta, abstractmethod
 
-from .pizza_factory import NYPizzaIngredientFactory
+from .ingredient_factory import (
+    NYPizzaIngredientFactory,
+    ChicagoPizzaIngredientFactory
+)
 from .pizza import (
     CheesePizza,
     ClamPizza
@@ -35,10 +38,26 @@ class NYPizzaStore(PizzaStore):
         ingredient_factory = NYPizzaIngredientFactory()
         if item == 'チーズ':
             pizza = CheesePizza(ingredient_factory)
-            pizza.set_name('NYスタイル野菜ピザ')
+            pizza.set_name('NYスタイルチーズピザ')
         elif item == 'クラム':
             pizza = ClamPizza(ingredient_factory)
             pizza.set_name('NYスタイルクラムピザ')
 
         return pizza
+
+
+class ChicagoPizzaStore(PizzaStore):
+
+    def create_pizza(self, item):
+        pizza = None
+        ingredient_factory = ChicagoPizzaIngredientFactory()
+        if item == 'チーズ':
+            pizza = CheesePizza(ingredient_factory)
+            pizza.set_name('シカゴスタイルチーズピザ')
+        elif item == 'クラム':
+            pizza = ClamPizza(ingredient_factory)
+            pizza.set_name('シカゴスタイルクラムピザ')
+
+        return pizza
+
 

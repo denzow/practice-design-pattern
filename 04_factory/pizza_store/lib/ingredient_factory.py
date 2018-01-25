@@ -61,3 +61,33 @@ class NYPizzaIngredientFactory(PizzaIngredientFactory):
 
     def create_clam(self):
         return FreshClams()
+
+
+class ChicagoPizzaIngredientFactory(PizzaIngredientFactory):
+    """
+    シカゴスタイル
+    """
+
+    def create_dough(self):
+        return ThickCrustDough()
+
+    def create_sauce(self):
+        return PlamTomatoSauce()
+
+    def create_cheese(self):
+        return Mozzarella()
+
+    def create_veggies(self):
+        veggies = [
+            EggPlant(),
+            Spinach(),
+            BlackOlives(),
+        ]
+        return veggies
+
+    def create_pepperoni(self):
+        return SlicedPepperoni()
+
+    def create_clam(self):
+        return FrozenClams()
+
