@@ -6,6 +6,7 @@ from io import StringIO
 from unittest import TestCase
 from lib.pizza_store import NYPizzaStore, ChicagoPizzaStore
 
+
 class TestWeather(TestCase):
 
     @staticmethod
