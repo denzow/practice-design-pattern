@@ -1,6 +1,6 @@
 # coding: utf-8
 
-from abc import ABCMeta, abstractmethod
+from abc import ABC, abstractmethod
 
 from .ingredient_factory import (
     NYPizzaIngredientFactory,
@@ -11,7 +11,7 @@ from .pizza import (
     ClamPizza
 )
 
-class PizzaStore:
+class PizzaStore(ABC):
 
     def order_pizza(self, pizza_type):
         pizza = self.create_pizza(pizza_type)

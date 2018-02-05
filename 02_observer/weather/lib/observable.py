@@ -4,10 +4,10 @@ Observerパターンに必要な基底クラスの定義
 """
 
 
-from abc import abstractmethod
+from abc import abstractmethod, ABC
 
 
-class Observer:
+class Observer(ABC):
     """
     オブザーバ(サブスクライバ)側の基底クラス
     """

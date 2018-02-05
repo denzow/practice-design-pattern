@@ -1,9 +1,9 @@
 # coding: utf-8
 
-from abc import ABCMeta, abstractmethod
+from abc import ABC, abstractmethod
 
 
-class Pizza:
+class Pizza(ABC):
 
     def __init__(self, ingredient_factory):
         """

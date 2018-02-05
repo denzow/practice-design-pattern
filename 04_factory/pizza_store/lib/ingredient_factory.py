@@ -1,12 +1,12 @@
 # coding: utf-8
 
 
-from abc import ABCMeta, abstractmethod
+from abc import ABC, abstractmethod
 
 from .ingredient import *
 
 
-class PizzaIngredientFactory:
+class PizzaIngredientFactory(ABC):
 
     @abstractmethod
     def create_dough(self):
