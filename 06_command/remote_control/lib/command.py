@@ -83,31 +83,57 @@ class CeilingFanCommand(Command):
 
 
 class CeilingFanHighCommand(CeilingFanCommand):
-
+    """
+    扇風機を強にする
+    """
     def execute(self):
         self._prev_speed = self._ceiling_fan.get_speed()
         self._ceiling_fan.high()
 
 
 class CeilingFanMediumCommand(CeilingFanCommand):
-
+    """
+    扇風機を中にする
+    """
     def execute(self):
         self._prev_speed = self._ceiling_fan.get_speed()
         self._ceiling_fan.medium()
 
 
 class CeilingFanLowCommand(CeilingFanCommand):
-
+    """
+    扇風機を低にする
+    """
     def execute(self):
         self._prev_speed = self._ceiling_fan.get_speed()
         self._ceiling_fan.low()
 
 
 class CeilingFanOffCommand(CeilingFanCommand):
-
+    """
+    扇風機をオフにする
+    """
     def execute(self):
         self._prev_speed = self._ceiling_fan.get_speed()
         self._ceiling_fan.off()
 
 
+class MacroCommand(Command):
 
+    def __init__(self, commands):
+        """
+        :param list[Command] commands:
+        """
+        self._commands = commands
+
+    def execute(self):
+        for command in self._commands:
+            command.execute()
+
+    def undo(self):
+        """
+        実行とは逆順でundoを呼び出す
+        :return:
+        """
+        for command in reversed(self._commands):
+            command.undo()

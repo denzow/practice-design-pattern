@@ -53,12 +53,46 @@ class TestRemoteControl(TestCase):
         remote_control.on_button_was_pushed(0)
         remote_control.off_button_was_pushed(0)
         print(remote_control)
-        remote_control.undo_button_was_pushed()
+        self.assertEqual(sys.stdout.getvalue(), """\
+リビングルーム 天井の扇風機の強さは「中」です
+リビングルーム 天井の扇風機の強さは「オフ」です
 
+------- リモコン -------
+[スロット 0] CeilingFanMediumCommand CeilingFanOffCommand
+[スロット 1] CeilingFanHighCommand CeilingFanOffCommand
+[スロット 2] NoCommand NoCommand
+[スロット 3] NoCommand NoCommand
+[スロット 4] NoCommand NoCommand
+[スロット 5] NoCommand NoCommand
+[スロット 6] NoCommand NoCommand
+[アンドゥ] CeilingFanOffCommand
+
+""")
+        self._clear_stdout()
+        remote_control.undo_button_was_pushed()
         remote_control.on_button_was_pushed(1)
         print(remote_control)
+        self.assertEqual(sys.stdout.getvalue(), """\
+リビングルーム 天井の扇風機の強さは「中」です
+リビングルーム 天井の扇風機の強さは「強」です
+
+------- リモコン -------
+[スロット 0] CeilingFanMediumCommand CeilingFanOffCommand
+[スロット 1] CeilingFanHighCommand CeilingFanOffCommand
+[スロット 2] NoCommand NoCommand
+[スロット 3] NoCommand NoCommand
+[スロット 4] NoCommand NoCommand
+[スロット 5] NoCommand NoCommand
+[スロット 6] NoCommand NoCommand
+[アンドゥ] CeilingFanHighCommand
+
+""")
+        self._clear_stdout()
         remote_control.undo_button_was_pushed()
-        self._print()
+        self.assertEqual(sys.stdout.getvalue(), """\
+リビングルーム 天井の扇風機の強さは「中」です
+""")
+
 
 
 
